@@ -9,7 +9,7 @@
 #include "../include/read.h"
 
 // Files to compile
-// g++ main.cpp graph.cpp read.cpp -std=gnu++17
+// g++ test.cpp graph.cpp read.cpp -std=gnu++17
 
 using namespace std;
 namespace fs = filesystem;
@@ -41,7 +41,7 @@ int main(int argc, char* argv[]){
     cout << "Edges : " << E << endl;
 
     vector<vector<int>> block_id = graph.get_block_id(0.00001);
-    cout << block_id.size() << endl;
+    cout << "Block Size : " << block_id.size() << endl;
 
     return 0;
 }
