@@ -34,6 +34,7 @@ int main(int argc, char* argv[]){
     read_graph_from_text_file(dataset_path, graph);
     cout << "Compleate reading graph" << endl;
 
+    /* グラフ情報(ノード数, エッジ数) */
     int N = graph.get_number_of_nodes();
     int E = graph.get_number_of_edges();
 

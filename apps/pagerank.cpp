@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <filesystem>
 #include <utility>
+#include <algorithm>
 #include "../include/graph.h"
 #include "../include/read.h"
 
@@ -22,7 +23,7 @@ int main(int argc, char* argv[]){
     cin >> graph_name;
 
     /* グラフのデータセットがあるか確認 */
-    string dataset_path = "../datasets/" + graph_name + ".txt";
+    string dataset_path = "../datasets/Gorder/" + graph_name + ".txt";
     if(!fs::is_regular_file(dataset_path)){ // なければ異常終了
         cout << "There are no such datasets" << endl;
         return 1;
@@ -61,7 +62,7 @@ int main(int argc, char* argv[]){
     cout << "Enter PageRank file name : ";
     cin >> pr_result_file;
 
-    string pr_result_path = "../pr_result/" + pr_result_file + ".txt";
+    string pr_result_path = "../pr_result/web-Google/" + pr_result_file + ".txt";
     ofstream ofs;
     ofs.open(pr_result_path);
 
