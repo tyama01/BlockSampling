@@ -41,8 +41,18 @@ int main(int argc, char* argv[]){
     cout << "Nodes : " << N << endl;
     cout << "Edges : " << E << endl;
 
-    vector<vector<int>> block_id = graph.get_block_id(0.00001);
-    cout << block_id.size() << endl;
+
+    /* PR値 */
+    string pr_path = "../pr_result/web-Google/" + graph_name + "_pr.txt";
+    if(!fs::is_regular_file(pr_path)){ // なければ異常終了
+        cout << "There are no such PR results" << endl;
+        return 1;
+    }
+
+    read_pr_from_text_file(pr_path, graph);
+    cout << "Compleate reading PR" << endl;
+
+    cout << graph.pr_list.size() << endl;
 
     return 0;
 }

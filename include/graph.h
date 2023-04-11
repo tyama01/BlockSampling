@@ -19,6 +19,9 @@ class Graph{
         const int get_number_of_nodes();
         const int get_number_of_edges();
 
+        // PR 値 unordered_map
+        unordered_map<int, double> pr_list;
+
         // グラフの操作
         void add_edge(int n1, int n2);
 
