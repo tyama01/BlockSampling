@@ -105,6 +105,23 @@ vector<vector<int>> Graph::get_block(double per_block_ratio){
     return block_id;
 }
 
+// ブロックスコア取得
+vector<double> Graph::get_block_score(vector<vector<int>> block, unordered_map<int, double> pr_list){
+    vector<double> block_score;
+    double score = 0;
+    int block_num = block.size();
+    for(int i = 0; i < block_num; i++){
+        for(int id : block[i]){
+            score += pr_list[id];
+        }
+        block_score.push_back(score);
+        score = 0;
+    }
+
+    return block_score;
+}
+
+
 /* PageRank 演算 */
 unordered_map<int, double> Graph::pagerank(){
 

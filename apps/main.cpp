@@ -60,6 +60,9 @@ int main(int argc, char* argv[]){
     vector<vector<int>> block = graph.get_block(block_size); // 頂点IDをブロック単位
     cout << "Block Num : " << block.size() << endl;
 
+    /* ブロックスコアを計算 */
+    vector<double> block_score = graph.get_block_score(block, graph.pr_list);
+
     return 0;
 }
 
