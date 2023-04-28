@@ -42,8 +42,8 @@ int main(int argc, char* argv[]){
     cout << "Edges : " << E << endl;
 
 
-    /* PR値 */
-    string pr_path = "../pr_result/web-Google/" + graph_name + "_pr.txt";
+    /* PR値読み込み */
+    string pr_path = "../pr_result/web-Google/" + graph_name + "_pr.txt"; // web-Google
     if(!fs::is_regular_file(pr_path)){ // なければ異常終了
         cout << "There are no such PR results" << endl;
         return 1;
@@ -52,7 +52,12 @@ int main(int argc, char* argv[]){
     read_pr_from_text_file(pr_path, graph);
     cout << "Compleate reading PR" << endl;
 
-    cout << graph.pr_list.size() << endl;
+    cout << "PR List Size : " << graph.pr_list.size() << endl;
+
+    /* 頂点IDをブロック化 */
+    double block_size = 0.001; // ブロックサイズ
+    vector<vector<int>> block = graph.get_block(block_size); // 頂点IDをブロック単位
+    cout << "Block Num : " << block.size() << endl;
 
     return 0;
 }

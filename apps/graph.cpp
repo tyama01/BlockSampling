@@ -54,7 +54,7 @@ void Graph::add_edge(int n1, int n2){
 
 
 /* 頂点IDをブロック化 */
-vector<vector<int>> Graph::get_block_id(double per_block_ratio){
+vector<vector<int>> Graph::get_block(double per_block_ratio){
 
     // ソートされた頂点ID
     vector<int> v = Graph::get_node_list_id_sort();

@@ -26,7 +26,7 @@ class Graph{
         void add_edge(int n1, int n2);
 
         // 頂点IDをブロック化
-        vector<vector<int>> get_block_id(double per_block_ratio);
+        vector<vector<int>> get_block(double per_block_ratio);
 
         // グラフ演算
         unordered_map<int, double> pagerank();
