@@ -56,7 +56,7 @@ int main(int argc, char* argv[]){
     cout << "PR List Size : " << graph.pr_list.size() << endl;
 
     /* 頂点IDをブロック化 */
-    double block_size = 0.001; // ブロックサイズ
+    double block_size = 0.01; // ブロックサイズ
     vector<vector<int>> block = graph.get_block(block_size); // 頂点IDをブロック単位
     cout << "Block Num : " << block.size() << endl;
 
