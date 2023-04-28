@@ -43,7 +43,8 @@ int main(int argc, char* argv[]){
 
 
     /* PR値読み込み */
-    string pr_path = "../pr_result/web-Google/" + graph_name + "_pr.txt"; // web-Google
+    string dataset_dir = "web-Google"; // データセットのディレクトリを指定
+    string pr_path = "../pr_result/" + dataset_dir + "/" + graph_name + "_pr.txt"; 
     if(!fs::is_regular_file(pr_path)){ // なければ異常終了
         cout << "There are no such PR results" << endl;
         return 1;
