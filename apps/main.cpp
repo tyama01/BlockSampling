@@ -58,8 +58,9 @@ int main(int argc, char* argv[]){
 
     /* 頂点IDをブロック化 */
     double block_size = 0.01; // ブロックサイズ
-    vector<vector<int>> block = graph.get_block(block_size); // 頂点IDをブロック単位
-    cout << "Block Num : " << block.size() << endl;
+    vector<vector<int>> block = graph.get_block(block_size); // 頂点IDをブロック単
+    int block_num = block.size(); // ブロック数
+    cout << "Block Num : " << block_num << endl;
 
     /* ブロックスコアを計算 */
     vector<double> block_score = graph.get_block_score(block, graph.pr_list);
@@ -70,6 +71,8 @@ int main(int argc, char* argv[]){
     sort(index.begin(), index.end(), [&](int x, int y){return block_score[x] < block_score[y];});
 
     cout << "End Sort" << endl;
+    //cout << block_score[index[0]] << endl;
+
 
     return 0;
 }
