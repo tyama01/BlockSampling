@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <filesystem>
 #include <utility>
+#include <bits/stdc++.h> // iota
 #include "../include/graph.h"
 #include "../include/read.h"
 
@@ -62,6 +63,13 @@ int main(int argc, char* argv[]){
 
     /* ブロックスコアを計算 */
     vector<double> block_score = graph.get_block_score(block, graph.pr_list);
+
+    // ブロックスコアをソート 昇順(小さい順)
+    vector<int> index(block_score.size());
+    iota(index.begin(), index.end(), 0);
+    sort(index.begin(), index.end(), [&](int x, int y){return block_score[x] < block_score[y];});
+
+    cout << "End Sort" << endl;
 
     return 0;
 }
