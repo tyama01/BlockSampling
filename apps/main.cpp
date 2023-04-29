@@ -85,8 +85,25 @@ int main(int argc, char* argv[]){
     unordered_set<int> sampling_nodes = graph.block_sampling(block_num, block, index,
     sampling_rate, beta);
 
+    cout << "End Block Sampling" << endl;
+
     cout << "Sampling Size : " << sampling_nodes.size() << endl;
 
+    
+    /* サンプリングしたノードを txt ファイルに出力 */
+    /*string nodes_dir = "web-Google";
+    string nodes_file;
+    cout << "Enter Nodes file name" << endl;
+    cin >> nodes_file;
+
+    string nodes_path = "../sampling_datasets/" + nodes_dir + "/" + nodes_file + ".txt";
+    ofstream ofs;
+    ofs.open(nodes_path);
+
+    for(auto& id : sampling_nodes){
+        ofs << id << endl;
+    }*/
+    
 
     return 0;
 }
