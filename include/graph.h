@@ -4,6 +4,7 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <time.h>
 
 using namespace std;
 
@@ -29,7 +30,12 @@ class Graph{
         vector<vector<int>> get_block(double per_block_ratio);
 
         // ブロックスコア取得
-        vector<double> get_block_score(vector<vector<int>> block, unordered_map<int, double> pr_list);
+        vector<double> get_block_score(vector<vector<int>> block,
+         unordered_map<int, double> pr_list);
+
+        // ブロックサンプリング
+        unordered_set<int> block_sampling(int block_num, vector<vector<int>> block,
+        vector<int> index, double sampling_size, double beta);
 
         // グラフ演算
         unordered_map<int, double> pagerank();

@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <utility>
 #include <bits/stdc++.h> // iota
+#include <time.h> // time
 #include "../include/graph.h"
 #include "../include/read.h"
 
@@ -57,7 +58,7 @@ int main(int argc, char* argv[]){
     cout << "PR List Size : " << graph.pr_list.size() << endl;
 
     /* 頂点IDをブロック化 */
-    double block_size = 0.01; // ブロックサイズ
+    double block_size = 0.001; // ブロックサイズ
     vector<vector<int>> block = graph.get_block(block_size); // 頂点IDをブロック単
     int block_num = block.size(); // ブロック数
     cout << "Block Num : " << block_num << endl;
@@ -72,6 +73,19 @@ int main(int argc, char* argv[]){
 
     cout << "End Sort" << endl;
     //cout << block_score[index[0]] << endl;
+
+    /* ブロックサンプリング */
+
+    // サンプリング率
+    double sampling_rate = 0.1;
+
+    // 上位ブロック取得割合
+    double beta = 0.2;
+
+    unordered_set<int> sampling_nodes = graph.block_sampling(block_num, block, index,
+    sampling_rate, beta);
+
+    cout << "Sampling Size : " << sampling_nodes.size() << endl;
 
 
     return 0;

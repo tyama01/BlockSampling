@@ -3,6 +3,7 @@
 #include <unordered_set>
 #include <iostream>
 #include <algorithm>
+#include <time.h>
 #include "../include/graph.h"
 
 using namespace std;
@@ -119,6 +120,55 @@ vector<double> Graph::get_block_score(vector<vector<int>> block, unordered_map<i
     }
 
     return block_score;
+}
+
+// ブロックサンプリング
+unordered_set<int> Graph::block_sampling(int block_num, vector<vector<int>> block,
+vector<int> index, double sampling_rate, double beta){
+
+
+    // 元グラフの頂点数
+    int N = this->get_number_of_nodes();
+
+    // サンプリング頂点集合
+    unordered_set<int> sampling_nodes;
+
+    // 1ブロックあたりの頂点数
+    int v_nums_per_block;
+
+
+    // スコア上位ブロックと下位ブロックのライン
+    int cut_line = block_num;
+
+    //上位 beta のブロックを取得
+    while(true){
+        cut_line -= 1;
+        for(int v : block[index[cut_line]]){
+            sampling_nodes.insert(v);
+        }
+        if(sampling_nodes.size() >= N*sampling_rate*beta){
+            break;
+        }
+    }
+
+    // 下位 1 -beta のブロックからランダム取得
+
+    // 乱数
+    srand(time(NULL));
+
+    while(true){
+        int rn = rand() % cut_line;
+        for(int v : block[index[rn]]){
+            sampling_nodes.insert(v);
+        }
+
+        if(sampling_nodes.size() >= N*sampling_rate){
+            break;
+        }
+    }
+
+    return sampling_nodes;
+
 }
 
 
