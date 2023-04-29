@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
 
     /* グラフのデータセットがあるか確認 */
     //string dataset_path = "../datasets/original/" + graph_name + ".txt"; //original データセット
-    string dataset_path = "../datasets/Gorder/" + graph_name + ".txt"; //Gorder されたデータセット
+    string dataset_path = "../datasets/Gorder/" + graph_name + "_Gorder.txt"; //Gorder されたデータセット
     if(!fs::is_regular_file(dataset_path)){ // なければ異常終了
         cout << "There are no such datasets" << endl;
         return 1;
@@ -45,8 +45,7 @@ int main(int argc, char* argv[]){
 
 
     /* PR値読み込み */
-    string dataset_dir = "web-Google"; // データセットのディレクトリを指定
-    string pr_path = "../pr_result/" + dataset_dir + "/" + graph_name + "_pr.txt"; 
+    string pr_path = "../pr_result/" + graph_name + "/" + graph_name + "_Gorder_pr.txt"; 
     if(!fs::is_regular_file(pr_path)){ // なければ異常終了
         cout << "There are no such PR results" << endl;
         return 1;
@@ -58,8 +57,10 @@ int main(int argc, char* argv[]){
     cout << "PR List Size : " << graph.pr_list.size() << endl;
 
     /* 頂点IDをブロック化 */
-    double block_size = 0.001; // ブロックサイズ
-    vector<vector<int>> block = graph.get_block(block_size); // 頂点IDをブロック単
+    double alpha = 0.001; // ブロックサイズ
+    //cout << "Enter Block Size : ";
+    //cin >> alpha;
+    vector<vector<int>> block = graph.get_block(alpha); // 頂点IDをブロック単
     int block_num = block.size(); // ブロック数
     cout << "Block Num : " << block_num << endl;
 
@@ -77,10 +78,14 @@ int main(int argc, char* argv[]){
     /* ブロックサンプリング */
 
     // サンプリング率
-    double sampling_rate = 0.1;
+    double sampling_rate;
+    cout << "Sampling Rate : ";
+    cin >> sampling_rate;
 
     // 上位ブロック取得割合
-    double beta = 0.2;
+    double beta = 0.4;
+    //cout << "Enter beta : ";
+    //cin >> beta;
 
     unordered_set<int> sampling_nodes = graph.block_sampling(block_num, block, index,
     sampling_rate, beta);
@@ -91,12 +96,11 @@ int main(int argc, char* argv[]){
 
     
     /* サンプリングしたノードを txt ファイルに出力 */
-    string nodes_dir = "web-Google";
     string nodes_file;
     cout << "Enter Nodes file name : ";
     cin >> nodes_file;
 
-    string nodes_path = "../sampling_datasets/" + nodes_dir + "/" + nodes_file + ".txt";
+    string nodes_path = "../sampling_datasets/" + graph_name + "/" + nodes_file + ".txt";
     ofstream ofs;
     ofs.open(nodes_path);
 
