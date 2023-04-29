@@ -91,9 +91,9 @@ int main(int argc, char* argv[]){
 
     
     /* サンプリングしたノードを txt ファイルに出力 */
-    /*string nodes_dir = "web-Google";
+    string nodes_dir = "web-Google";
     string nodes_file;
-    cout << "Enter Nodes file name" << endl;
+    cout << "Enter Nodes file name : ";
     cin >> nodes_file;
 
     string nodes_path = "../sampling_datasets/" + nodes_dir + "/" + nodes_file + ".txt";
@@ -102,7 +102,7 @@ int main(int argc, char* argv[]){
 
     for(auto& id : sampling_nodes){
         ofs << id << endl;
-    }*/
+    }
     
 
     return 0;
