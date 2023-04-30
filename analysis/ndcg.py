@@ -26,3 +26,24 @@ def ndcg(rel_true, rel_pred, p=None, form="linear"):
         raise ValueError("Only supported for two formula, 'linear' or 'exp'")
 
     return dcg / idcg
+
+def ndcg_tyama(pr_original, pr_sample, x):
+    
+    # 元グラフのPR値
+    rel_true = list(pr_original.values())
+
+    # サンプリンググラフの頂点ID
+    sample_keys = list(pr_sample.keys())
+
+    # サンプリンググラフの上位頂点の元グラフでのPR値　
+    rel_pred = []
+    for tmp_key in sample_keys:
+        rel_pred.append(pr_original[tmp_key])
+        
+    # nDCG の適用範囲を指定して計算    
+    N = len(rel_pred) # 元グラフの頂点数
+    y = int(N*x) # nDCG の提供範囲
+    
+    return ndcg(rel_true, rel_pred, form="exp")
+    
+    
