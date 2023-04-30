@@ -23,7 +23,14 @@ int main(int argc, char* argv[]){
     cin >> graph_name;
 
     /* グラフのデータセットがあるか確認 */
-    string dataset_path = "../datasets/Gorder/" + graph_name + ".txt";
+    string datasets;
+    cout << "Enter dic (datasets or sampling datasets) : ";
+    cin >> datasets;
+    string real_datasets;
+    cout << "Enter dic (real datasets) : ";
+    cin >> real_datasets;
+    string dataset_path = "../" + datasets + "/" + real_datasets + "/" + 
+    graph_name +".txt";
     if(!fs::is_regular_file(dataset_path)){ // なければ異常終了
         cout << "There are no such datasets" << endl;
         return 1;
@@ -58,11 +65,12 @@ int main(int argc, char* argv[]){
     });
 
     // txtファイル出力
-    string pr_result_file;
-    cout << "Enter PageRank file name : ";
-    cin >> pr_result_file;
+    //string pr_result_file;
+    //cout << "Enter PageRank dic/file name : ";
+    //cin >> pr_result_file;
 
-    string pr_result_path = "../pr_result/web-Google/" + pr_result_file + ".txt";
+    string pr_result_path = "../pr_result/" + real_datasets + "/" + 
+    graph_name + "_pr.txt";
     ofstream ofs;
     ofs.open(pr_result_path);
 

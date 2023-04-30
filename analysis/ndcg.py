@@ -44,6 +44,6 @@ def ndcg_tyama(pr_original, pr_sample, x):
     N = len(rel_pred) # 元グラフの頂点数
     y = int(N*x) # nDCG の提供範囲
     
-    return ndcg(rel_true, rel_pred, form="exp")
+    return ndcg(rel_true, rel_pred[:y], form="exp")
     
     
