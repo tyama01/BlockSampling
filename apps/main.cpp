@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
     cout << "PR List Size : " << graph.pr_list.size() << endl;
 
     /* 頂点IDをブロック化 */
-    double alpha = 0.001; // ブロックサイズ
+    double alpha = 0.0001; // ブロックサイズ
     //cout << "Enter Block Size : ";
     //cin >> alpha;
     vector<vector<int>> block = graph.get_block(alpha); // 頂点IDをブロック単

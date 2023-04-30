@@ -35,7 +35,7 @@ while(True):
 
 # nDCG を計算
 ndcg_result_dic = {}
-r_list = [0.0001, 0.001, 0.01, 0.1] # 0.01%, 0.1%, 1%, 10%
+r_list = [0.0001, 0.001, 0.01, 0.1] # 0.001%, 00.1%, 0.1%, 1%
 for key in pr_sample_nest.keys():
     ndcg_result = []
     for r in r_list:
@@ -57,7 +57,7 @@ labels_series = [] # サンプリングの種類のラベル
 for key in ndcg_result_dic.keys():
     labels_series.append(key)
     
-labels_data = ["0.01%", "0.1%", "1%", "10%"] # nDCG 適用範囲ラベル
+labels_data = ["0.001%", "00.1%", "0.1%", "1%"] # nDCG 適用範囲ラベル
 
 # Figureを作成する。
 fig = plt.figure()
