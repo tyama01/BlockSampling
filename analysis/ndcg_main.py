@@ -110,5 +110,8 @@ ax.legend(loc="lower left")
 
 # グラフを表示する。
 plt.show()
-#plt.savefig("Google_data/Google_ndcg_60_c.pdf")
-    
+
+
+#output_file = input("figure name : ")
+#output_path = ("analysis_data/" + pr_dir + "/" + output_file + ".pdf")
+#plt.savefig(output_path)    
