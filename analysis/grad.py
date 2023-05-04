@@ -9,7 +9,13 @@ from matplotlib import rcParams
 # 元グラフ読み込み
 graph_name = input("Enter graph name : ")
 graph_path = "datasets/Gorder/" + graph_name + "_Gorder.txt"
+
+#有向グラフ
 G = nx.read_edgelist(graph_path, create_using=nx.DiGraph, nodetype=int)
+
+#無向グラフ
+#G = nx.read_edgelist(graph_path, nodetype=int)
+
 
 labels_series = [] # サンプリングの種類のラベル
 labels_series.append("original")
@@ -32,7 +38,13 @@ while(True):
             break
         
         data_path = "sampling_datasets/" + graph_name + "/" + data_file + ".txt"
+        
+        # 有向グラフ
         Gs = nx.read_edgelist(data_path, create_using=nx.DiGraph, nodetype=int)
+        
+        # 無向グラフ
+        #Gs = nx.read_edgelist(data_path, nodetype=int)
+        
         Gs_size_list.append(Gs)
 
 # 元グラフの grad を計算

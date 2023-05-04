@@ -9,7 +9,13 @@ G_list = []
 # 元グラフ読み込み
 graph_name = input("Enter graph name : ")
 graph_path = "datasets/Gorder/" + graph_name + "_Gorder.txt"
+
+#有向グラフ
 G = nx.read_edgelist(graph_path, create_using=nx.DiGraph, nodetype=int)
+
+#無向グラフ
+#G = nx.read_edgelist(graph_path, nodetype=int)
+
 G_list.append(G)
 
 labels_series = [] # サンプリングの種類のラベル
@@ -23,7 +29,13 @@ while(True):
     
     data_file = input("Enter Sampling Graph file name : ") # ファイル名
     data_path = "sampling_datasets/" + graph_name + "/" + data_file + ".txt"
+    
+    # 有向グラフ
     Gs = nx.read_edgelist(data_path, create_using=nx.DiGraph, nodetype=int)
+    
+    # 無向グラフ
+    #Gs = nx.read_edgelist(data_path, nodetype=int)
+    
     G_list.append(Gs)
     
     labels_series.append(sampling_type)
