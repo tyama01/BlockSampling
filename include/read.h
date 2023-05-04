@@ -9,6 +9,8 @@ class Graph;
 
 void read_graph_from_text_file(string file_path, Graph& graph);
 
+void read_ugraph_from_text_file(string file_path, Graph& graph);
+
 void read_pr_from_text_file(string file_path, Graph& graph);
 
 #endif // GUAD_READ_H

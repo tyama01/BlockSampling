@@ -24,7 +24,12 @@ class Graph{
         unordered_map<int, double> pr_list;
 
         // グラフの操作
+
+        // エッジ追加　有向グラフ
         void add_edge(int n1, int n2);
+
+        // エッジ追加 無向グラフ
+        void u_add_edge(int n3, int n4);
 
         // 頂点IDをブロック化
         vector<vector<int>> get_block(double per_block_ratio);

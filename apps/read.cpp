@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// 指定したファイルの読み込み
+// 指定したファイルの読み込み 有向グラフ
 void read_graph_from_text_file(string file_path, Graph& graph){
     ifstream ifs(file_path);
     if(!ifs){
@@ -23,6 +23,20 @@ void read_graph_from_text_file(string file_path, Graph& graph){
     }
 }
 
+// 指定したファイルの読み込み　無向グラフ
+void read_ugraph_from_text_file(string file_path, Graph& graph){
+    ifstream ifs(file_path);
+    if(!ifs){
+        cout << "Failed to open file" << endl;
+        exit(-1);
+    } else {
+        for(int n3, n4; ifs >> n3 >> n4;){
+            graph.u_add_edge(n3, n4);
+        }
+    }
+}
+
+// PR 値読み込み
 void read_pr_from_text_file(string file_path, Graph& graph){
     ifstream ifs(file_path);
     if(!ifs){

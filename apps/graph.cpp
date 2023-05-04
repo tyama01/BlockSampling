@@ -42,7 +42,7 @@ const int Graph::get_number_of_edges(){
 
 /* グラフの操作 */
 
-// エッジ生成 
+// エッジ生成 有向グラフ
 void Graph::add_edge(int n1, int n2){
     // adjacency_list に n1 -> n2 を追加(有向のため)
     this->adjacency_list[n1].push_back(n2);
@@ -51,6 +51,17 @@ void Graph::add_edge(int n1, int n2){
     // 頂点リスト生成 (set)
     this->node_list_set.insert(n1);
     this->node_list_set.insert(n2);
+}
+
+// エッジ生成 無向グラフ
+void Graph::u_add_edge(int n3, int n4){
+    // adjacency_list に n1 -> n2 を追加(有向のため)
+    this->adjacency_list[n3].push_back(n4);
+    this->adjacency_list[n4].push_back(n3);
+
+    // 頂点リスト生成 (set)
+    this->node_list_set.insert(n3);
+    this->node_list_set.insert(n4);
 }
 
 
