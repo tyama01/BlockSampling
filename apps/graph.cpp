@@ -184,6 +184,16 @@ vector<double> Graph::get_block_score(vector<vector<int>> block, unordered_map<i
         for(int id : block[i]){
             score += pr_list[id];
         }
+
+        if((i == block_num - 2) || (i == block_num - 1)){
+            for(int id : block[i]){
+                if(id == 0){
+                    continue;
+                }
+                score += pr_list[id];
+            }
+        }
+
         block_score.push_back(score);
         score = 0;
     }
@@ -229,6 +239,11 @@ vector<int> index, double sampling_rate, double beta){
         int rn = rand() % cut_line;
         for(int v : block[index[rn]]){
             sampling_nodes.insert(v);
+
+            if(sampling_nodes.size() >= N*sampling_rate){
+            break;
+        }
+
         }
 
         if(sampling_nodes.size() >= N*sampling_rate){

@@ -8,7 +8,7 @@ using namespace std;
 int main(){
     vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-    double block_size = 0.5;
+    double block_size = 0.3;
 
     int N = 9;
     int n = N*block_size;
