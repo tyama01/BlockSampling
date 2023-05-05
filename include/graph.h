@@ -34,6 +34,9 @@ class Graph{
         // 頂点IDをブロック化
         vector<vector<int>> get_block(double per_block_ratio);
 
+        // 跨ぎを許した頂点IDのブロック化
+        vector<vector<int>> get_cross_block(double per_block_ratio);
+
         // ブロックスコア取得
         vector<double> get_block_score(vector<vector<int>> block,
          unordered_map<int, double> pr_list);

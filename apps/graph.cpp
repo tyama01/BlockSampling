@@ -117,6 +117,64 @@ vector<vector<int>> Graph::get_block(double per_block_ratio){
     return block_id;
 }
 
+/* 跨ぎを許した頂点IDのブロック化 */
+vector<vector<int>> Graph::get_cross_block(double per_block_ratio){
+
+     // ソートされた頂点ID
+    vector<int> v = Graph::get_node_list_id_sort();
+
+    // 頂点数
+    int N = Graph::get_number_of_nodes();
+
+    //vectorをそれぞれサイズ`n`のサブvectorに分割します
+    int n = N*per_block_ratio;
+
+    // 跨ぎの割合 デフォルトは半分
+    int over_lap = n / 2;
+
+    //サイズ`n`のサブvectorの総数を決定します
+    int size = ((v.size() - 1) / n + 1) + ((v.size() - 1 - over_lap) / n + 1);
+
+    //サブvectorを格納するvectorのアレイを作成します
+    vector<int> vec[size];
+
+    //このループの各反復は、次の`n`要素のセットを処理します
+    //そしてそれを`vec`のk番目のインデックスのvectorに格納します
+    for (int k = 0; k < size; ++k)
+    {
+        //次の`n`要素のセットの範囲を取得します
+        auto start_itr = next(v.cbegin(), k*n - over_lap * k);
+        auto end_itr = next(v.cbegin(), k*n + n - over_lap * k);
+
+        cout << "end 2" << endl;
+ 
+        //サブvectorにメモリを割り当てます
+        vec[k].resize(n);
+ 
+        //最後のサブvectorを処理するコード
+        //含まれる要素が少ない
+        if (k*n - over_lap*k + n - over_lap*k > v.size())
+        {
+            end_itr = v.cend();
+            vec[k].resize(v.size() - k*n);
+        }
+ 
+        //入力範囲からサブvectorに要素をコピーします
+        copy(start_itr, end_itr, vec[k].begin());
+    }
+
+    // id をブロック化
+    vector<vector<int>> block_id(size);
+    for(int i = 0; i < size; i++){
+        for(int id : vec[i]){
+            block_id[i].push_back(id);
+        }
+    }
+
+    return block_id;
+}
+
+
 // ブロックスコア取得
 vector<double> Graph::get_block_score(vector<vector<int>> block, unordered_map<int, double> pr_list){
     vector<double> block_score;
