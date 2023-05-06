@@ -61,7 +61,13 @@ int main(int argc, char* argv[]){
     double alpha = 0.0001; // ブロックサイズ
     //cout << "Enter Block Size : ";
     //cin >> alpha;
-    vector<vector<int>> block = graph.get_block(alpha); // 頂点IDをブロック単
+
+    // 跨ぎなしのブロック
+    vector<vector<int>> block = graph.get_block(alpha); 
+
+    // 跨ぎありのブロック
+    //vector<vector<int>> block = graph.get_cross_block(alpha);
+
     int block_num = block.size(); // ブロック数
     cout << "Block Num : " << block_num << endl;
 
