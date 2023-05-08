@@ -57,15 +57,15 @@ int main(int argc, char* argv[]){
     cout << "PR List Size : " << graph.pr_list.size() << endl;
 
     /* 頂点IDをブロック化 */
-    double alpha = 0.0001; // ブロックサイズ 0.01%
+    double alpha = 0.0005; // ブロックサイズ 0.05%
     //cout << "Enter Block Size : ";
     //cin >> alpha;
 
     // 跨ぎなしのブロック
-    vector<vector<int>> block = graph.get_block(alpha); 
+    //vector<vector<int>> block = graph.get_block(alpha); 
 
     // 跨ぎありのブロック
-    //vector<vector<int>> block = graph.get_cross_block(alpha);
+    vector<vector<int>> block = graph.get_cross_block(alpha);
 
     
     int block_num = block.size(); // ブロック数
@@ -85,7 +85,7 @@ int main(int argc, char* argv[]){
     //cout << block_score[index[0]] << endl;
 
     /* ブロックスコアを txt ファイルに出力 */
-    string output_path = "../analysis/" + graph_name + "block_score_001.txt";
+    string output_path = "../analysis/" + graph_name + "_cross_block_score_005.txt";
     ofstream ofs;
     ofs.open(output_path);
 

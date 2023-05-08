@@ -145,8 +145,6 @@ vector<vector<int>> Graph::get_cross_block(double per_block_ratio){
         //次の`n`要素のセットの範囲を取得します
         auto start_itr = next(v.cbegin(), k*n - over_lap * k);
         auto end_itr = next(v.cbegin(), k*n + n - over_lap * k);
-
-        cout << "end 2" << endl;
  
         //サブvectorにメモリを割り当てます
         vec[k].resize(n);
