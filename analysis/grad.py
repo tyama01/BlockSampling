@@ -46,6 +46,8 @@ while(True):
         #Gs = nx.read_edgelist(data_path, nodetype=int)
         
         Gs_size_list.append(Gs)
+    
+    Gs_list.append(Gs_size_list)
 
 # 元グラフの grad を計算
 degree = dict(G.degree())
@@ -61,11 +63,12 @@ logx = np.log10(x)
 logy = np.log10(y)
 
 a, b = np.polyfit(logx, logy, 1)
+print(a)
 
 # 元グラフの grad をサンプリングサイズ分追加
 G_grad = []
-for i in range(len(Gs_size_list[0])):
-    G_grad.append(a)
+for i in range(4):
+    G_grad.append(-a)
     
 # grad_data
 grad_data = [] # [[元グラフの傾き], [Block の傾き], [pr_top の傾き]
@@ -89,7 +92,7 @@ for i in range(len(Gs_list)):
         
 
         a, b = np.polyfit(logx, logy, 1)
-        a_list.append(a)
+        a_list.append(-a)
         
     grad_data.append(a_list)
     
@@ -142,7 +145,7 @@ ax.yaxis.set_major_locator(mpl.ticker.MultipleLocator(0.1))
 
 ax.plot(x, grad_data[0], label = labels_series[0], linestyle="solid", color=cmap(0))
 
-for i in range(len(Gs_list)):
+for i in range(1, (len(Gs_list) + 1)):
     ax.scatter(x, grad_data[i], label = labels_series[i], color=cmap(i))
     ax.plot(x, grad_data[i], linestyle = "dashed", color=cmap(i))
     
