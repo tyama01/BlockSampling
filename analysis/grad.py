@@ -104,7 +104,7 @@ for i in range(len(Gs_list)):
 #labels_data = ["10%", "20%", "30%", "40%"]
 
 # beta を変化
-labels_data = ["40%", "60%", "80%", "100%"]
+labels_data = ["10%", "20%", "30%", "40%"]
 
 rcParams['pdf.fonttype'] = 42
 
