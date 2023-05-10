@@ -92,7 +92,7 @@ int main(int argc, char* argv[]){
     cin >> sampling_rate;
 
     // 上位ブロック取得割合
-    double beta = 0.4;
+    double beta = 1;
     //cout << "Enter beta : ";
     //cin >> beta;
 

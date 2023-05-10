@@ -100,7 +100,11 @@ for i in range(len(Gs_list)):
 
 # ------------------ grad plot -------------------------
 
-labels_data = ["10%", "20%", "30%", "40%"]
+# グラフサイズを変化
+#labels_data = ["10%", "20%", "30%", "40%"]
+
+# beta を変化
+labels_data = ["40%", "60%", "80%", "100%"]
 
 rcParams['pdf.fonttype'] = 42
 
@@ -125,7 +129,11 @@ fig.set_facecolor("white")
 ax.set_facecolor("white")
 
 # x軸とy軸のラベルを設定する。
-ax.set_xlabel("Graph size", fontsize=14)
+# グラフサイズ
+#ax.set_xlabel("Graph size", fontsize=14)
+
+# beta
+ax.set_xlabel("beta", fontsize=14)
 ax.set_ylabel("gamma", fontsize=14)
 
 # x軸の目盛のラベルの位置を変数xで保持する。
