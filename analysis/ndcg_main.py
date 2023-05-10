@@ -7,8 +7,8 @@ from ndcg import *
 # 元グラフのPR値読み込み
 pr_original = {} # 元グラフの頂点ID と PR値を辞書型で保持
 pr_dir = input("Enter Real datasets directory : ")
-pr_file = input("Enter Original PR file name : ") # ファイル名
-pr_path = "pr_result/" + pr_dir + "/" + pr_file + "_pr.txt" 
+#pr_file = input("Enter Original PR file name : ") # ファイル名
+pr_path = "pr_result/" + pr_dir + "/" + pr_dir + "_Gorder_pr.txt" 
 with open(pr_path) as f:
     for line in f:
         (k, v) = line.split()
@@ -85,7 +85,7 @@ ax.xaxis.set_major_locator(mpl.ticker.FixedLocator(x))
 ax.xaxis.set_major_formatter(mpl.ticker.FixedFormatter(labels_data))
 
 # y軸の範囲を設定する。
-ax.set_ylim(0.9, 1.0)
+ax.set_ylim(0.8, 1.0)
 # y軸の目盛の位置を設定する。
 ax.yaxis.set_major_locator(mpl.ticker.MultipleLocator(0.01))
 # y軸の目盛のラベルを設定する。
