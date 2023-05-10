@@ -62,10 +62,10 @@ int main(int argc, char* argv[]){
     //cin >> alpha;
 
     // 跨ぎなしのブロック
-    vector<vector<int>> block = graph.get_block(alpha); 
+    //vector<vector<int>> block = graph.get_block(alpha); 
 
     // 跨ぎありのブロック
-    //vector<vector<int>> block = graph.get_cross_block(alpha);
+    vector<vector<int>> block = graph.get_cross_block(alpha);
 
     
     int block_num = block.size(); // ブロック数

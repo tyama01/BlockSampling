@@ -50,7 +50,7 @@ with open(pr_path) as f:
         
 # 頂点数
 N = len(node_id)
-x = 0.0001 # 0.01 %
+x = 0.1 /100 # 0.1 %
 x_id = node_id[:int(N*x)] # 上位 x の範囲まで調べる
 
 # 上位の隣接頂点の取得割合を計算
@@ -92,7 +92,7 @@ ax.set_ylabel("neigbors ratio", fontsize=14)
 k = np.arange(len(x_id))
 
 # x軸の目盛の位置を設定する。
-ax.xaxis.set_major_locator(mpl.ticker.FixedLocator(k))
+ax.xaxis.set_major_locator(mpl.ticker.FixedLocator(k*100))
 
 # y軸の範囲を設定する。
 ax.set_ylim(0, 1.0)

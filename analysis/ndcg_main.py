@@ -85,7 +85,7 @@ ax.xaxis.set_major_locator(mpl.ticker.FixedLocator(x))
 ax.xaxis.set_major_formatter(mpl.ticker.FixedFormatter(labels_data))
 
 # y軸の範囲を設定する。
-ax.set_ylim(0.8, 1.0)
+ax.set_ylim(0.9, 1.0)
 # y軸の目盛の位置を設定する。
 ax.yaxis.set_major_locator(mpl.ticker.MultipleLocator(0.01))
 # y軸の目盛のラベルを設定する。
