@@ -91,7 +91,7 @@ ax.set_facecolor("white")
 ax.set_xlabel("log10 (Degree)", fontsize=14)
 ax.set_ylabel("log10 (Number of nodes)", fontsize=14)
 
-ax.set_xlim(min(logx_list[1]), max(logx_list[1]))
+ax.set_xlim(min(logx_list[0]), max(logx_list[0]))
 
 for i in range(len(G_list)):
     scatter_plot = plt.scatter(logx_list[i], logy_list[i],color=cmap(i), s=0.5)
